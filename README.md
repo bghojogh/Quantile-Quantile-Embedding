@@ -11,11 +11,13 @@ This code is for **Quantile-Quantile Embedding (QQE)**.
 
 ## Using QQE for Distribution Transformation
 
-![distribution_transform_synthetic2](https://user-images.githubusercontent.com/66282117/85348760-94bc8e00-b4ca-11ea-83a2-034a2a1bb3ed.png)
-
 ### Synthetic Data with Reference Sample
 
+![distribution_transform_synthetic2](https://user-images.githubusercontent.com/66282117/85348760-94bc8e00-b4ca-11ea-83a2-034a2a1bb3ed.png)
+
 ### Synthetic Data with Reference CDF
+
+<img src="https://user-images.githubusercontent.com/66282117/85349033-5a072580-b4cb-11ea-8dc1-fb8bee15d5ab.png" width="50%">
 
 ### Facial Image Data
 
