@@ -17,17 +17,17 @@ This code is for **Quantile-Quantile Embedding (QQE)**.
 
 ### Synthetic Data with Reference CDF
 
-<img src="https://user-images.githubusercontent.com/66282117/85349033-5a072580-b4cb-11ea-8dc1-fb8bee15d5ab.png" width="50%">
+<img src="https://user-images.githubusercontent.com/66282117/85349033-5a072580-b4cb-11ea-8dc1-fb8bee15d5ab.png" width="70%">
 
 ### Facial Image Data (Changing Distribution to Have Eye-Glasses)
 
-<img src="https://user-images.githubusercontent.com/66282117/85349091-83c04c80-b4cb-11ea-8c44-bcc87eb1f7fe.png" width="50%">
+<img src="https://user-images.githubusercontent.com/66282117/85349091-83c04c80-b4cb-11ea-8c44-bcc87eb1f7fe.png" width="70%">
 
 ## Manifold Embedding
 
 ### Synthetic Data
 
-
+![manifoldEmbedding_synthetic-1](https://user-images.githubusercontent.com/66282117/85349293-19f47280-b4cc-11ea-9feb-7f7e5ba4994e.png)
 
 ### MNIST Digit Data
 
