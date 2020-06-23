@@ -1,0 +1,1 @@
+The output files of algorithm are saved in this folder.

@@ -1,0 +1,215 @@
+C:\ProgramData\Anaconda3\envs\tf-gpu-v1-40-0\python.exe C:/Users/bghojogh/Desktop/To_run/2_ResNet_crossEntropy/main.py
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\envs\tf-gpu-v1-40-0\lib\site-packages\tensorflow\python\compat\v2_compat.py:61: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+WARNING:tensorflow:From C:/Users/bghojogh/Desktop/To_run/2_ResNet_crossEntropy/main.py:88: DatasetV1.output_types (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.data.get_output_types(dataset)`.
+WARNING:tensorflow:From C:/Users/bghojogh/Desktop/To_run/2_ResNet_crossEntropy/main.py:89: DatasetV1.output_shapes (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.compat.v1.data.get_output_shapes(dataset)`.
+WARNING:tensorflow:From C:\Users\bghojogh\Desktop\To_run\2_ResNet_crossEntropy\ResNet.py:15: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From C:\Users\bghojogh\Desktop\To_run\2_ResNet_crossEntropy\ResNet.py:21: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From C:\Users\bghojogh\Desktop\To_run\2_ResNet_crossEntropy\ops_resnet.py:25: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.keras.layers.Conv2D` instead.
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F906D4D48>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F906D4D48>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90700308>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90700308>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F9080C448>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F9080C448>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90636648>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90636648>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F9080CB88>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F9080CB88>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F908719C8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F908719C8>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F908F8E48>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F908F8E48>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90949E08>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90949E08>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F908C57C8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F908C57C8>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F9092AA08>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F9092AA08>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90823488>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90823488>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90A20C08>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90A20C08>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90B395C8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90B395C8>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90A81488>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90A81488>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90A31B48>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90A31B48>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90AF2F88>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90AF2F88>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90B438C8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90B438C8>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90C59408>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90C59408>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F9084C248>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F9084C248>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90CCFC08>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Conv.call of <tensorflow.python.layers.convolutional.Conv2D object at 0x0000028F90CCFC08>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:From C:\Users\bghojogh\Desktop\To_run\2_ResNet_crossEntropy\ops_resnet.py:110: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:Entity <bound method Flatten.call of <tensorflow.python.layers.core.Flatten object at 0x0000028F90CB7F48>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Flatten.call of <tensorflow.python.layers.core.Flatten object at 0x0000028F90CB7F48>>: AttributeError: module 'gast' has no attribute 'Num'
+WARNING:tensorflow:From C:\Users\bghojogh\Desktop\To_run\2_ResNet_crossEntropy\ops_resnet.py:32: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING:tensorflow:Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x0000028F90CB7F48>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x0000028F90CB7F48>>: AssertionError: Bad argument number for Name: 3, expecting 4
+WARNING:tensorflow:Entity <bound method Flatten.call of <tensorflow.python.layers.core.Flatten object at 0x0000028F90CE8948>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Flatten.call of <tensorflow.python.layers.core.Flatten object at 0x0000028F90CE8948>>: AttributeError: module 'gast' has no attribute 'Num'
+WARNING:tensorflow:Entity <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x0000028F90CE8948>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Dense.call of <tensorflow.python.layers.core.Dense object at 0x0000028F90CE8948>>: AssertionError: Bad argument number for Name: 3, expecting 4
+2020-06-02 15:16:29.477712: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library nvcuda.dll
+2020-06-02 15:16:29.496479: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: GeForce GTX 1080 major: 6 minor: 1 memoryClockRate(GHz): 1.7335
+pciBusID: 0000:01:00.0
+2020-06-02 15:16:29.496665: I tensorflow/stream_executor/platform/default/dlopen_checker_stub.cc:25] GPU libraries are statically linked, skip dlopen check.
+2020-06-02 15:16:29.497089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0
+2020-06-02 15:16:29.497542: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX AVX2
+2020-06-02 15:16:29.500402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: GeForce GTX 1080 major: 6 minor: 1 memoryClockRate(GHz): 1.7335
+pciBusID: 0000:01:00.0
+2020-06-02 15:16:29.500745: I tensorflow/stream_executor/platform/default/dlopen_checker_stub.cc:25] GPU libraries are statically linked, skip dlopen check.
+2020-06-02 15:16:29.501497: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1763] Adding visible gpu devices: 0
+2020-06-02 15:16:29.983432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-02 15:16:29.983570: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0 
+2020-06-02 15:16:29.983650: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N 
+2020-06-02 15:16:29.984264: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1326] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 6358 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080, pci bus id: 0000:01:00.0, compute capability: 6.1)
+============= epoch: 0/49
+Average loss of epoch 0: 2.1997228
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 1/49
+Average loss of epoch 1: 2.0809968
+============= epoch: 2/49
+Average loss of epoch 2: 1.9897977
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 3/49
+Average loss of epoch 3: 1.9034393
+============= epoch: 4/49
+Average loss of epoch 4: 1.8461654
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 5/49
+Average loss of epoch 5: 1.7854632
+============= epoch: 6/49
+Average loss of epoch 6: 1.7497813
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 7/49
+Average loss of epoch 7: 1.7247473
+============= epoch: 8/49
+Average loss of epoch 8: 1.6834009
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 9/49
+Average loss of epoch 9: 1.6507807
+============= epoch: 10/49
+Average loss of epoch 10: 1.6159947
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 11/49
+Average loss of epoch 11: 1.6064523
+============= epoch: 12/49
+Average loss of epoch 12: 1.5779434
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 13/49
+Average loss of epoch 13: 1.5558798
+============= epoch: 14/49
+Average loss of epoch 14: 1.531595
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 15/49
+Average loss of epoch 15: 1.5208322
+============= epoch: 16/49
+Average loss of epoch 16: 1.495941
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 17/49
+Average loss of epoch 17: 1.4834951
+============= epoch: 18/49
+Average loss of epoch 18: 1.4693211
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 19/49
+Average loss of epoch 19: 1.448779
+============= epoch: 20/49
+Average loss of epoch 20: 1.4318445
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 21/49
+Average loss of epoch 21: 1.4183695
+============= epoch: 22/49
+Average loss of epoch 22: 1.3982931
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 23/49
+Average loss of epoch 23: 1.3906349
+============= epoch: 24/49
+Average loss of epoch 24: 1.3770196
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 25/49
+Average loss of epoch 25: 1.3636512
+============= epoch: 26/49
+Average loss of epoch 26: 1.3383787
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 27/49
+Average loss of epoch 27: 1.3259925
+============= epoch: 28/49
+Average loss of epoch 28: 1.3198954
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 29/49
+Average loss of epoch 29: 1.3058461
+============= epoch: 30/49
+Average loss of epoch 30: 1.3000443
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 31/49
+Average loss of epoch 31: 1.2739877
+============= epoch: 32/49
+Average loss of epoch 32: 1.2684555
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 33/49
+Average loss of epoch 33: 1.2510927
+============= epoch: 34/49
+Average loss of epoch 34: 1.2458321
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 35/49
+Average loss of epoch 35: 1.2349216
+============= epoch: 36/49
+Average loss of epoch 36: 1.2273322
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 37/49
+Average loss of epoch 37: 1.209082
+============= epoch: 38/49
+Average loss of epoch 38: 1.2043362
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 39/49
+Average loss of epoch 39: 1.1990921
+============= epoch: 40/49
+Average loss of epoch 40: 1.1780156
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 41/49
+Average loss of epoch 41: 1.1643096
+============= epoch: 42/49
+Average loss of epoch 42: 1.1633003
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 43/49
+Average loss of epoch 43: 1.148424
+============= epoch: 44/49
+Average loss of epoch 44: 1.1299713
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 45/49
+Average loss of epoch 45: 1.1282669
+============= epoch: 46/49
+Average loss of epoch 46: 1.1196203
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 47/49
+Average loss of epoch 47: 1.105263
+============= epoch: 48/49
+Average loss of epoch 48: 1.1003288
+saving the plot of embedding space....
+Model saved in path: .\network_model\ResNet\
+============= epoch: 49/49
+Average loss of epoch 49: 1.1107652
+
+Process finished with exit code 0
