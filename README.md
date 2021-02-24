@@ -9,7 +9,7 @@ This is the code for the following paper:
 
 This code is for **Quantile-Quantile Embedding (QQE)**.
 
-Some manifold learning and dimensionality reduction methods, such as PCA, Isomap, and MDS, do not care about the distribution of embedding. Some other manifold learning and dimensionality reduction methods, such as SNE and t-SNE, force the distribution of embedding to a specific distribution. They do not give choice of embedding distribution to the user. **QQE gives user the freedom to choose the distribution of embedding in manifold learning and dimensionality reduction. QQE also can be used for distribution transformation of data.**
+Some manifold learning and dimensionality reduction methods, such as PCA, Isomap, and MDS, do not care about the distribution of embedding. Some other manifold learning and dimensionality reduction methods, such as SNE and t-SNE, force the distribution of embedding to a specific distribution. They do not give choice of embedding distribution to the user. **QQE gives user the freedom to choose the distribution of embedding in manifold learning and dimensionality reduction. QQE can also be used for distribution transformation of data.**
 
 ## Using QQE for Distribution Transformation
 
