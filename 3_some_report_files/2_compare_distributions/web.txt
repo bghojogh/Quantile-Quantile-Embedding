@@ -1,0 +1,12 @@
+google it: how to kl divergence by samples
+https://stats.stackexchange.com/questions/211175/kullback-leibler-divergence-for-two-samples
+
+google it: python kernel density estimation
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html
+
+https://scikit-learn.org/stable/modules/density.html
+https://scikit-learn.org/stable/auto_examples/neighbors/plot_kde_1d.html
+
+google it: python kl divergence
+http://ethen8181.github.io/machine-learning/model_selection/kl_divergence.html
+
