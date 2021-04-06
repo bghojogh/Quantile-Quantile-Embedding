@@ -486,7 +486,8 @@ class My_QQ_embedding:
             objective_function_distance_part_toSave = objective_function_distance_part_toSave[:iteration_start]
             time_quasi_newton = time_quasi_newton[:iteration_start]
         if self.save_umap_of_iterations:
-            self.save_umap_of_data(data_=X_matched_initial, data_name="X_matched_initial", path_save_plots=path_save_base+"iterations_umap/")
+            # self.save_umap_of_data(data_=X_matched_initial, data_name="X_matched_initial", path_save_plots=path_save_base+"iterations_umap/")  #--> used for discrimination of facial images
+            self.save_umap_of_data_2(data_=X_matched_initial, data_name="X_matched_initial", path_save_plots=path_save_base+"iterations_umap/")   #--> used for histopathology
         KNN_distance_matrix_initial, neighbors_indices = self.find_KNN_distance_matrix(X=X_matched_initial, n_neighbors=self.n_neighbors)
         normalization_factor = sum(sum(KNN_distance_matrix_initial))
         start_time = time.time()
@@ -540,15 +541,16 @@ class My_QQ_embedding:
                 else:
                     plot_embedding_of_images = False
                 self.save_scatter_of_data_2(data_=X_matched, data_name="X_matched_iteration_"+str(iteration_index), path_save_numpy=path_save_base+"iterations_numpy/", path_save_plot=path_save_base+"iterations_plot/", path_save_plot_images=path_save_base+"iterations_plot_2/", color_map=self.colormap, color_meshgrid=self.color_meshgrid, do_plot=self.dataset_can_be_plotted, plot_embedding_of_images=plot_embedding_of_images)
-                # if not self.supervised_mode:
-                #     X_matched_outliersRemoved, color_meshgrid_outliersRemoved = self.remove_outliers(data_=X_matched, color_meshgrid=self.color_meshgrid)
-                #     self.save_scatter_of_data(data_=X_matched_outliersRemoved, data_name="X_matched_iteration_"+str(iteration_index), path_save_numpy=path_save_base+"iterations_numpy_noOutliers/", path_save_plot=path_save_base+"iterations_plot_noOutliers/", color_map=self.colormap, color_meshgrid=color_meshgrid_outliersRemoved, do_plot=self.dataset_can_be_plotted)
-                # else:
-                #     self.save_scatter_of_data_3_removingOutliersForSupervised(data_=X_matched, data_name="X_matched_iteration_"+str(iteration_index), path_save_numpy=path_save_base+"iterations_numpy_noOutliers/", path_save_plot=path_save_base+"iterations_plot_noOutliers/", color_map=self.colormap, color_meshgrid=self.color_meshgrid, do_plot=self.dataset_can_be_plotted)
+                if not self.supervised_mode:
+                    X_matched_outliersRemoved, color_meshgrid_outliersRemoved = self.remove_outliers(data_=X_matched, color_meshgrid=self.color_meshgrid)
+                    self.save_scatter_of_data(data_=X_matched_outliersRemoved, data_name="X_matched_iteration_"+str(iteration_index), path_save_numpy=path_save_base+"iterations_numpy_noOutliers/", path_save_plot=path_save_base+"iterations_plot_noOutliers/", color_map=self.colormap, color_meshgrid=color_meshgrid_outliersRemoved, do_plot=self.dataset_can_be_plotted)
+                else:
+                    self.save_scatter_of_data_3_removingOutliersForSupervised(data_=X_matched, data_name="X_matched_iteration_"+str(iteration_index), path_save_numpy=path_save_base+"iterations_numpy_noOutliers/", path_save_plot=path_save_base+"iterations_plot_noOutliers/", color_map=self.colormap, color_meshgrid=self.color_meshgrid, do_plot=self.dataset_can_be_plotted)
                 if self.save_images_of_iterations:
                     self.save_image_of_data(data_=X_matched, data_name="X_matched_iteration_"+str(iteration_index), path_save_images=path_save_base+"iterations_images/")
                 if self.save_umap_of_iterations:
-                    self.save_umap_of_data(data_=X_matched, data_name="X_matched_iteration_"+str(iteration_index), path_save_plots=path_save_base+"iterations_umap/")
+                    # self.save_umap_of_data(data_=X_matched, data_name="X_matched_iteration_"+str(iteration_index), path_save_plots=path_save_base+"iterations_umap/")   #--> used for discrimination of facial images
+                    self.save_umap_of_data_2(data_=X_matched, data_name="X_matched_iteration_"+str(iteration_index), path_save_plots=path_save_base+"iterations_umap/")   #--> used for histopathology
                 self.save_variable(variable=np.asarray(objective_function_toSave), name_of_variable="objective_function", path_to_save=path_save_base)
                 self.save_np_array_to_txt(variable=np.column_stack((np.array([i for i in range(iteration_index+1)]).T, np.asarray(objective_function_toSave).T)), name_of_variable="objective_function", path_to_save=path_save_base)
                 self.save_variable(variable=np.asarray(objective_function_QQ_part_toSave), name_of_variable="objective_function_QQ_part_toSave", path_to_save=path_save_base)
@@ -594,6 +596,31 @@ class My_QQ_embedding:
             color_meshgrid_outliers_removed = color_meshgrid_outliers_removed.compress(samples_to_keep)
         return data_outliers_removed, color_meshgrid_outliers_removed
 
+    # #----> for some manual experiments, this may be useful to remove outliers, for plotting, by manual ranges:
+    # def remove_outliers(self, data_, color_meshgrid):
+    #     # data_: column-wise samples
+    #     data_outliers_removed = data_.copy()
+    #     color_meshgrid_outliers_removed = color_meshgrid.copy()
+    #     for dimension_index in range(data_.shape[0]):
+    #         data_dimension = data_[dimension_index, :].ravel()
+    #         # Set upper and lower limit to 3 standard deviation
+    #         if dimension_index == 0:
+    #             lower_limit = -2
+    #             upper_limit = 2
+    #         else:
+    #             lower_limit = -3
+    #             upper_limit = 3
+    #         samples_to_keep = []
+    #         for sample_index in range(data_outliers_removed.shape[1]):
+    #             sample_ = data_outliers_removed[:, sample_index]
+    #             if sample_[dimension_index] > upper_limit or sample_[dimension_index] < lower_limit:
+    #                 samples_to_keep.append(False)
+    #             else:
+    #                 samples_to_keep.append(True)
+    #         data_outliers_removed = data_outliers_removed.compress(samples_to_keep, axis=1)
+    #         color_meshgrid_outliers_removed = color_meshgrid_outliers_removed.compress(samples_to_keep)
+    #     return data_outliers_removed, color_meshgrid_outliers_removed
+
     def remove_outliers_2(self, data_, color_meshgrid):
         # data_: column-wise samples
         indices_of_points_in_theClassWorkingOn = np.asarray(self.indices_of_points_in_classes[self.which_class_workingOn_now]).copy()
@@ -614,7 +641,8 @@ class My_QQ_embedding:
                 sample_ = data_outliers_removed[:, sample_index]
                 if sample_[dimension_index] > upper_limit or sample_[dimension_index] < lower_limit:
                     # samples_to_keep.append(False)
-                    samples_to_remove.append(sample_index)
+                    if sample_index not in samples_to_remove:
+                        samples_to_remove.append(sample_index)
                     indices_of_points_in_theClassWorkingOn_outliers.append(indices_of_points_in_theClassWorkingOn[sample_index])
         indices_of_points_in_theClassWorkingOn_outliers_removed = [indices_of_points_in_theClassWorkingOn[i] for i in range(data_.shape[1]) if i not in samples_to_remove]
         samples_to_keep = [i for i in range(data_.shape[1]) if i not in samples_to_remove]
@@ -631,11 +659,15 @@ class My_QQ_embedding:
 
     def save_scatter_of_data(self, data_, data_name, path_save_numpy, path_save_plot, color_map, color_meshgrid, do_plot=True):
         self.save_variable(variable=data_, name_of_variable=data_name, path_to_save=path_save_numpy)
+        self.save_variable(variable=color_meshgrid, name_of_variable=data_name+"_ColorMeshgrid", path_to_save=path_save_numpy)
+        self.save_variable(variable=color_map, name_of_variable=data_name+"_ColorMap", path_to_save=path_save_numpy)
         if do_plot:
             fig, ax = plt.subplots()
             if not os.path.exists(path_save_plot):
                 os.makedirs(path_save_plot)
             plt.scatter(data_[0, :], data_[1, :], c=color_meshgrid, cmap=color_map, edgecolors='k')
+            plt.xticks(fontsize=20)
+            plt.yticks(fontsize=20)
             # plt.show()
             plt.savefig(path_save_plot + data_name + ".png")
             plt.clf()
@@ -654,7 +686,7 @@ class My_QQ_embedding:
                 im = im.convert('RGB')
             im.save(path_save_images+data_name+"/"+str(sample_index)+".png")
 
-    def save_umap_of_data(self, data_, data_name, path_save_plots):
+    def save_umap_of_data(self, data_, data_name, path_save_plots):  #--> use for binary classes in supervised mode, mostly
         if not os.path.exists(path_save_plots):
             os.makedirs(path_save_plots)
         if self.supervised_mode:
@@ -663,6 +695,9 @@ class My_QQ_embedding:
             data_all = X_all_classes
             # labels_all = self.y
             labels_all = self.labels_of_all_dataset
+        elif self.notSupervisedButUseLabelsForPlot:
+            labels_all = self.labels_of_all_dataset
+            data_all = data_
         else:
             labels_all = np.zeros((data_.shape[1],))
             data_all = data_
@@ -684,13 +719,15 @@ class My_QQ_embedding:
         # cbar = plt.colorbar(boundaries=np.arange(n_classes+1)-0.5)
         # cbar.set_ticks(np.arange(n_classes))
         # cbar.set_ticklabels(classes)
+        plt.xticks(fontsize=20)
+        plt.yticks(fontsize=20)
         # plt.show()
         plt.savefig(path_save_plots + data_name + ".png")
         plt.clf()
         # plt.close()
         self.save_variable(variable=data_dimension_reduced, name_of_variable=data_name+"_plotData", path_to_save=path_save_plots + "figs/")
         self.save_variable(variable=labels_all, name_of_variable=data_name + "_plotColors", path_to_save=path_save_plots + "figs/")
-        plot_embedding_of_images = True
+        plot_embedding_of_images = False  #--> True or False
         if plot_embedding_of_images:
             if not os.path.exists(path_save_plots + "images/"):
                 os.makedirs(path_save_plots + "images/")
@@ -707,12 +744,75 @@ class My_QQ_embedding:
             # fig, ax = plt.subplots(figsize=(10, 10))
             # self.plot_components(X_projected=data_dimension_reduced, which_dimensions_to_plot=[0,1], images=images, ax=None, image_scale=0.4, markersize=10, thumb_frac=0.08, cmap="gray")
             self.plot_components(X_projected=data_dimension_reduced, which_dimensions_to_plot=[0,1], images=images, ax=None, image_scale=0.8, markersize=10, thumb_frac=0.03, cmap="gray")
+            plt.xticks(fontsize=20)
+            plt.yticks(fontsize=20)
+            plt.savefig(path_save_plots + "images/" + data_name + ".png")
+            plt.clf()
+            plt.close()
+
+    def save_umap_of_data_2(self, data_, data_name, path_save_plots):  #--> use labels in plotting umap, either it is supervised or unsupervised
+        if not os.path.exists(path_save_plots):
+            os.makedirs(path_save_plots)
+        if self.supervised_mode:
+            X_all_classes = self.X_multiclass_to_plot.copy()
+            X_all_classes[:, self.indices_of_points_in_classes[self.which_class_workingOn_now]] = data_
+            data_all = X_all_classes
+            # labels_all = self.y
+            labels_all = self.labels_of_all_dataset
+        elif self.notSupervisedButUseLabelsForPlot:
+            labels_all = self.labels_of_all_dataset
+            data_all = data_
+        else:
+            labels_all = np.zeros((data_.shape[1],))
+            data_all = data_
+        if data_all.shape[0] == 2:
+            data_dimension_reduced = data_all
+        else:
+            data_dimension_reduced = (umap.UMAP(n_neighbors=500).fit_transform(data_all.T)).T
+        # _, ax = plt.subplots(1, figsize=(14, 10))
+        _, ax = plt.subplots(1, figsize=(5, 5))
+        n_classes = len(np.unique(labels_all))
+        classes = [str(i) for i in range(n_classes)]
+        plt.scatter(data_dimension_reduced[0, :], data_dimension_reduced[1, :], c=labels_all, cmap=self.colormap)
+        n_classes = len(np.unique(labels_all))
+        cbar = plt.colorbar(boundaries=np.arange(n_classes + 1) - 0.5)
+        cbar.set_ticks(np.arange(n_classes))
+        cbar.set_ticklabels(classes)
+        plt.xticks(fontsize=20)
+        plt.yticks(fontsize=20)
+        # plt.show()
+        plt.savefig(path_save_plots + data_name + ".png")
+        plt.clf()
+        # plt.close()
+        self.save_variable(variable=data_dimension_reduced, name_of_variable=data_name+"_plotData", path_to_save=path_save_plots + "figs/")
+        self.save_variable(variable=labels_all, name_of_variable=data_name + "_plotColors", path_to_save=path_save_plots + "figs/")
+        plot_embedding_of_images = False  #--> True or False
+        if plot_embedding_of_images:
+            if not os.path.exists(path_save_plots + "images/"):
+                os.makedirs(path_save_plots + "images/")
+            # self.plot_embedding(X=data_, image_scale=0.2,  title=None)
+            n_samples = self.X_images_to_plot.shape[1]
+            scale = 1
+            dataset_notReshaped = np.zeros((n_samples, self.image_height*scale, self.image_width*scale))
+            for image_index in range(n_samples):
+                image = self.X_images_to_plot[:, image_index]
+                image_not_reshaped = image.reshape((self.image_height, self.image_width))
+                image_not_reshaped_scaled = image_not_reshaped
+                dataset_notReshaped[image_index, :, :] = image_not_reshaped_scaled
+            images = dataset_notReshaped
+            # fig, ax = plt.subplots(figsize=(10, 10))
+            # self.plot_components(X_projected=data_dimension_reduced, which_dimensions_to_plot=[0,1], images=images, ax=None, image_scale=0.4, markersize=10, thumb_frac=0.08, cmap="gray")
+            self.plot_components(X_projected=data_dimension_reduced, which_dimensions_to_plot=[0,1], images=images, ax=None, image_scale=0.8, markersize=10, thumb_frac=0.03, cmap="gray")
+            plt.xticks(fontsize=20)
+            plt.yticks(fontsize=20)
             plt.savefig(path_save_plots + "images/" + data_name + ".png")
             plt.clf()
             plt.close()
 
     def save_scatter_of_data_2(self, data_, data_name, path_save_numpy, path_save_plot, path_save_plot_images, color_map, color_meshgrid, do_plot=True, plot_embedding_of_images=False):
         self.save_variable(variable=data_, name_of_variable=data_name, path_to_save=path_save_numpy)
+        self.save_variable(variable=color_meshgrid, name_of_variable=data_name+"_ColorMeshgrid", path_to_save=path_save_numpy)
+        self.save_variable(variable=color_map, name_of_variable=data_name+"_ColorMap", path_to_save=path_save_numpy)
         if do_plot:
             fig, ax = plt.subplots()
             if not os.path.exists(path_save_plot):
@@ -723,6 +823,8 @@ class My_QQ_embedding:
                 self.X_multiclass_to_plot[:, self.indices_of_points_in_classes[self.which_class_workingOn_now]] = data_
                 plt.scatter(self.X_multiclass_to_plot[0, :], self.X_multiclass_to_plot[1, :], c=self.labels_of_all_dataset, cmap=color_map, edgecolors='k')
                 data_ = self.X_multiclass_to_plot
+            plt.xticks(fontsize=20)
+            plt.yticks(fontsize=20)
             # plt.show()
             plt.savefig(path_save_plot + data_name + ".png")
             plt.clf()
@@ -745,6 +847,8 @@ class My_QQ_embedding:
                 # fig, ax = plt.subplots(figsize=(10, 10))
                 # self.plot_components(X_projected=data_, which_dimensions_to_plot=[0,1], images=images, ax=None, image_scale=0.4, markersize=10, thumb_frac=0.08, cmap="gray")
                 self.plot_components(X_projected=data_, which_dimensions_to_plot=[0,1], images=images, ax=None, image_scale=0.8, markersize=10, thumb_frac=0.03, cmap="gray")
+                plt.xticks(fontsize=20)
+                plt.yticks(fontsize=20)
                 plt.savefig(path_save_plot_images + data_name + ".png")
                 plt.clf()
                 plt.close()
@@ -753,6 +857,10 @@ class My_QQ_embedding:
         data_outliers_removed, color_meshgrid_outliers_removed, \
         indices_of_points_in_theClassWorkingOn_outliers_removed, indices_of_points_in_theClassWorkingOn_outliers = self.remove_outliers_2(data_=data_, color_meshgrid=color_meshgrid)
         self.save_variable(variable=data_outliers_removed, name_of_variable=data_name, path_to_save=path_save_numpy)
+        self.save_variable(variable=color_meshgrid_outliers_removed, name_of_variable=data_name+"_ColorMeshgrid", path_to_save=path_save_numpy)
+        self.save_variable(variable=color_map, name_of_variable=data_name+"_ColorMap", path_to_save=path_save_numpy)
+        self.save_variable(variable=indices_of_points_in_theClassWorkingOn_outliers_removed, name_of_variable=data_name+"_indicesOutliersRemoved", path_to_save=path_save_numpy)
+        self.save_variable(variable=indices_of_points_in_theClassWorkingOn_outliers, name_of_variable=data_name+"_indicesOutliers", path_to_save=path_save_numpy)
         if do_plot:
             if not os.path.exists(path_save_plot):
                 os.makedirs(path_save_plot)
@@ -769,6 +877,8 @@ class My_QQ_embedding:
                     X_multiclass_to_plot_outliersRemoved[:, counter_] = X_multiclass_to_plot[:, sample_index]
                     labels_of_kept_points[counter_] = self.labels_of_all_dataset[sample_index]
             plt.scatter(X_multiclass_to_plot_outliersRemoved[0, :], X_multiclass_to_plot_outliersRemoved[1, :], c=labels_of_kept_points, cmap=color_map, edgecolors='k')
+            plt.xticks(fontsize=20)
+            plt.yticks(fontsize=20)
             # plt.show()
             plt.savefig(path_save_plot + data_name + ".png")
             plt.clf()

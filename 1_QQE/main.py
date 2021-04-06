@@ -14,19 +14,20 @@ from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
 from skimage.transform import resize
 from PIL import Image
 import math
+import umap
 
 
 def main():
     # ---- settings:
-    dataset = "MNIST_1000_resnet" #--> one_blob, s_curve, three_blobs, three_clusters, ORL_glasses, ORL_glasses_balanced_separateClasses, MNIST_100, MNIST_500, MNIST_1000, MNIST_1000_resnet, MNIST_1000_siamese
+    dataset = "s_curve" #--> one_blob, s_curve, three_blobs, three_clusters, ORL_glasses, ORL_glasses_balanced_separateClasses, MNIST_100, MNIST_500, MNIST_1000, MNIST_1000_resnet, MNIST_1000_siamese, CRC_FDT_loss
     initialization_method = "" #--> PCA, Sammon_mapping, LLE, Isomap, TSNE, FDA
-    experiment = 7
+    experiment = 2
     dimensionaity_reduction_mode = False
     do_initialization_dimension_reduction_again = False
     generate_synthetic_datasets_again = False
     read_dataset_again = False
     plot_dataset_again = False
-    transform_to_just_shape_of_reference = True
+    transform_to_just_shape_of_reference = True #--> True: transform to shape of distribution, False: transform to exact distribution
     generate_reference_sample_again = True
     swap_data_and_reference_sample = False
     notSupervisedButUseLabelsForPlot = False  #--> True: unsupervised (use labels for plot only if y is not None), False: supervised (or unsupervised when y=None)
@@ -38,14 +39,14 @@ def main():
     embedding_dimensionality = 2
     n_samples_synthetic = 1000
     n_features_synthetic = 2
-    n_neighbors = 10
-    regularization_parameter = 10  #--> weight of QQ-plot (compared to the local distance preserving)
-    learning_rate_fuzzy_QQplot = 0.01
+    n_neighbors = 10   #---> k in paper
+    regularization_parameter = 10  #--> weight of QQ-plot (compared to the local distance preserving) --> it is (1 / lambda) in paper
+    learning_rate_fuzzy_QQplot = 0.01  #--> eta in paper
     learning_rate_Sammon_mapping = 0.1
     max_iterations_Sammon_mapping = 11
-    max_iterations_matching = 10
-    max_iterations_transformation = 301
-    colormap = plt.cm.tab10  #--> hsv, brg (good for S curve), rgb, jet, gist_ncar (good for one blob), tab10, Set1, rainbow, Spectral #--> https://matplotlib.org/3.2.1/tutorials/colors/colormaps.html
+    max_iterations_matching = 1
+    max_iterations_transformation = 651
+    colormap = plt.cm.hsv  #--> hsv, brg (good for S curve), rgb, jet, gist_ncar (good for one blob), tab10, Set1, rainbow, Spectral #--> https://matplotlib.org/3.2.1/tutorials/colors/colormaps.html
 
 
 
@@ -135,6 +136,57 @@ def main():
         X_images_to_plot = None
         image_height = 28
         image_width = 28
+        plot_embedding_of_images = False
+    elif dataset == "CRC_FDT_loss":
+        take_1000_per_class_again = False
+        if take_1000_per_class_again:
+            X_all_triplets = np.load("./datasets/CRC_FDT_loss/embedding.npy")
+            X_all_triplets = X_all_triplets.T  #--> make it column-wise
+            y_all_triplets = np.load("./datasets/CRC_FDT_loss/subtypes.npy")
+            labels = ["01_TUMOR", "02_STROMA", "03_COMPLEX", "04_LYMPHO", "05_DEBRIS", "06_MUCOSA", "07_ADIPOSE", "08_EMPTY"]
+            y_all_triplets = [labels.index(label) for label in y_all_triplets]
+            y_all_triplets = np.asarray(y_all_triplets)
+            X = np.empty((128, 0))
+            y = []
+            for class_index in range(10):
+                print("class: " + str(class_index))
+                X_all_triplets_thisClass = X_all_triplets[:, y_all_triplets==class_index]
+                y_all_triplets_thisClass = y_all_triplets[y_all_triplets==class_index]
+                counter_ = -1
+                X_thisClass = np.zeros(X_all_triplets.shape)
+                y_thisClass = np.zeros((len(y_all_triplets_thisClass),))
+                for sample_index in range(X_all_triplets_thisClass.shape[1]):
+                    repeated = False
+                    for sample_index_2 in range(0, sample_index):
+                        if np.linalg.norm(X_all_triplets_thisClass[:, sample_index] - X_all_triplets_thisClass[:, sample_index_2]) == 0: #--> is a reapted sample
+                            repeated = True
+                    if not repeated:
+                        counter_ += 1
+                        X_thisClass[:, counter_] = X_all_triplets_thisClass[:, sample_index]
+                        y_thisClass[counter_] = y_all_triplets_thisClass[sample_index]
+                X = np.column_stack((X, X_thisClass[:, :(counter_+1)]))
+                y.extend(y_all_triplets_thisClass[:(counter_+1)])
+            y = np.asarray(y)
+            X = X - np.tile(X.mean(axis=1).reshape((-1,1)), X.shape[1])  #--> make mean of embedding zero
+            save_variable(variable=X, name_of_variable="X", path_to_save="./datasets/CRC_FDT_loss/")
+            save_variable(variable=y, name_of_variable="y", path_to_save="./datasets/CRC_FDT_loss/")
+        else:
+            X = load_variable(name_of_variable="X", path="./datasets/CRC_FDT_loss/")
+            y = load_variable(name_of_variable="y", path="./datasets/CRC_FDT_loss/")
+        # X_visualization = (umap.UMAP(n_neighbors=500).fit_transform(X.T)).T
+        # fig, ax = plt.subplots()
+        # plt.scatter(X_visualization[0, :], X_visualization[1, :], c=y, cmap=colormap)
+        # n_classes = len(np.unique(y))
+        # classes = ["Tumor", "Stroma", "Complex", "Lympho", "Debris", "Mucosa", "Adipose", "Empty"]
+        # cbar = plt.colorbar(boundaries=np.arange(n_classes + 1) - 0.5)
+        # cbar.set_ticks(np.arange(n_classes))
+        # cbar.set_ticklabels(classes)
+        # plt.xticks(fontsize=20)
+        # plt.yticks(fontsize=20)
+        # plt.show()
+        X_images_to_plot = None
+        image_height = None
+        image_width = None
         plot_embedding_of_images = False
 
 
@@ -234,6 +286,22 @@ def main():
     elif experiment == 16:
         reference_distribution = "thick_square"
         reference_distribution_parameters = [0.5, 1.5, [1, 1]]  # --> [inner radius, outer radius, mean]
+    elif experiment == 17:
+        reference_distribution = "blob"
+        reference_distribution_parameters = [[0 for i in range(128)], 1]  # --> [centers, cluster_std]
+    elif experiment == 18:
+        n_dimensions = X.shape[0]
+        reference_distribution = ["blob"] * 8
+        reference_distribution_parameters = [[]] * 8
+        n_dimensions = 128
+        reference_distribution_parameters[0] = [[-5, 0] + [0 for i in range(n_dimensions-2)], 0.5]  # --> [mean, radius]
+        reference_distribution_parameters[1] = [[-3.5, 3.5] + [0 for i in range(n_dimensions-2)], 0.5]  # --> [mean, radius]
+        reference_distribution_parameters[2] = [[0, 5] + [0 for i in range(n_dimensions-2)], 0.5]  # --> [mean, radius]
+        reference_distribution_parameters[3] = [[3.5, 3.5] + [0 for i in range(n_dimensions-2)], 0.5]  # --> [mean, radius]
+        reference_distribution_parameters[4] = [[5, 0] + [0 for i in range(n_dimensions-2)], 0.5]  # --> [mean, radius]
+        reference_distribution_parameters[5] = [[3.5, -3.5] + [0 for i in range(n_dimensions-2)], 0.5]  # --> [mean, radius]
+        reference_distribution_parameters[6] = [[0, -5] + [0 for i in range(n_dimensions-2)], 0.5]  # --> [mean, radius]
+        reference_distribution_parameters[7] = [[-3.5, -3.5] + [0 for i in range(n_dimensions-2)], 0.5]  # --> [mean, radius]
 
     my_QQ_embedding = My_QQ_embedding(learning_rate_fuzzy_QQplot=learning_rate_fuzzy_QQplot, learning_rate_Sammon_mapping=learning_rate_Sammon_mapping,
                                       regularization_parameter=regularization_parameter, n_neighbors=n_neighbors,
