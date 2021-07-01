@@ -1,4 +1,4 @@
-# Quantile-Quantile Embedding
+# Quantile-Quantile Embedding (QQE)
 
 ## Paper
 
