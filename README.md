@@ -4,7 +4,7 @@
 
 This is the code for the following paper:
 
-- Benyamin Ghojogh, Fakhri Karray, and Mark Crowley. "**Quantile-Quantile Embedding for distribution transformation and manifold embedding with ability to choose the embedding distribution**", Machine Learning with Applications, Elsevier, 2021.
+- Benyamin Ghojogh, Fakhri Karray, Mark Crowley, "**Quantile-Quantile Embedding for distribution transformation and manifold embedding with ability to choose the embedding distribution**", Machine Learning with Applications, Elsevier, 2021.
 - Link to paper: https://doi.org/10.1016/j.mlwa.2021.100088
 - Link to arXiv version of paper: https://arxiv.org/abs/2006.11385
 - Link to the Code Ocean Reproducible code of this project: https://codeocean.com/capsule/3352791/tree/v1
