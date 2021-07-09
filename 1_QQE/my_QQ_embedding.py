@@ -505,7 +505,7 @@ class My_QQ_embedding:
                         d = All_NN_distance_matrix[sample_index, neighbor_index_in_dataset]
                         d_initial = KNN_distance_matrix_initial[sample_index, neighbor_index_in_dataset]
                         gradient_term2 += ((d - d_initial) / (d * d_initial)) * (X_matched[dimension_index, sample_index] - X_matched[dimension_index, neighbor_index_in_dataset])
-                        Hessian_term2 += ((d - d_initial) / (d * d_initial)) - ((X_matched[dimension_index, sample_index] - X_matched[dimension_index, neighbor_index_in_dataset])**2 / d**3)
+                        Hessian_term2 += ((d - d_initial) / (d * d_initial)) + ((X_matched[dimension_index, sample_index] - X_matched[dimension_index, neighbor_index_in_dataset])**2 / d**3)
                     gradient_term2 *= (1 / normalization_factor)
                     Hessian_term2 *= (1 / normalization_factor)
                     gradient_ = (self.regularization_parameter * gradient_term1) + gradient_term2
